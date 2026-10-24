@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { format, subDays } from 'date-fns'
 
 const DateRangePicker = ({ onDateChange, isLoading }) => {
-  // Default to January 2026
+  // Default to January 2026 (our historical forecast data range)
   const defaultTo = new Date(2026, 0, 31)
   const defaultFrom = new Date(2026, 0, 1)
 
-  // Date constraints
+  // Date constraints - January 2026 only
   const minDate = format(defaultFrom, 'yyyy-MM-dd')
   const maxDate = format(defaultTo, 'yyyy-MM-dd')
 
