@@ -376,24 +376,3 @@ Chart + Metrics Display
 ```
 
 ---
-
-## Performance Characteristics
-
-| Metric | Value | Notes |
-|--------|-------|-------|
-| Initial Page Load | ~2 sec | API call + network latency included |
-| Chart Render | <100ms | 744+ data points, Recharts optimized |
-| Date Filter Change | <50ms | Client-side, no network latency |
-| API Response Time | 1-2 sec | Limited by Elexon API (external) |
-| Monthly Cost (Vercel) | £15-20 | Serverless, auto-scaling |
-
----
-
-## Known Limitations
-
-- **No Persistent Storage**: Data fetched fresh on each request (intentional for simplicity)
-- **Single Forecast per Interval**: No historical forecast comparisons yet
-- **Date Range**: Limited to data available in Elexon API
-- **Mock Data**: January 2026 uses realistic but simulated data
-
----
