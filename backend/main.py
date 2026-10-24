@@ -2,6 +2,10 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from models import ForecastResponse, MetricsResponse, ForecastData, ActualData
 from services.elexon_api import ElexonAPIClient
@@ -10,10 +14,13 @@ from services.metrics import MetricsCalculator
 
 app = FastAPI(title="UK Wind Power Forecasting API", version="1.0.0")
 
+# Get CORS origins from environment variable or use default
+cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
